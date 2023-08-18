@@ -2,12 +2,19 @@ version: "3"
 
 services:
   php:
-    image: php:apache
+    build:
+      context: .
+      dockerfile: Dockerfile-php
     volumes:
       - ./:/var/www/html # syn project dir with container web dir
     ports:
       - 80:80
       - 443:443 # for future ssl traffic?
+    depends_on:
+      - mydatabase
+    networks:
+      - camagru-docker
+
   mydatabase:
     image: mysql:latest
     environment:
@@ -17,6 +24,8 @@ services:
       - MYSQL_ALLOW_EMPTY_PASSWORD=1
     volumes:
       - "./database_local:/docker-entrypoint-initdb.d" # sync local sql file with container
+    networks:
+      - camagru-docker
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -25,3 +34,11 @@ services:
     environment:
       - PMA_HOST=mydatabase
       - PMA_PORT=3306
+    depends_on:
+      - mydatabase
+    networks:
+      - camagru-docker
+
+networks:
+  camagru-docker:
+    driver: bridge
