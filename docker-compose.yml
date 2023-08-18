@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  php:
+    image: php:apache
+    volumes:
+      - ./:/var/www/html # syn project dir with container web dir
+    ports:
+      - 80:80
+      - 443:443 # for future ssl traffic?
+  mydatabase:
+    image: mysql:latest
+    environment:
+      - MYSQL_DATABASE=camagru_database # This should be in the .env file
+      - MYSQL_USER=php_docker
+      - MYSQL_PASSWORD=password
+      - MYSQL_ALLOW_EMPTY_PASSWORD=1
+    volumes:
+      - "./database_local:/docker-entrypoint-initdb.d" # sync local sql file with container
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8001:80
+    environment:
+      - PMA_HOST=mydatabase
+      - PMA_PORT=3306
