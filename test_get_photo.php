@@ -1,5 +1,7 @@
 <?php
 
+require "functions.php";
+
 $title = "Test Get Photo";
 
 $connect = mysqli_connect(

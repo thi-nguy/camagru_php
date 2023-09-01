@@ -8,13 +8,13 @@
         <div class="collapse navbar-collapse" id="navbarsExample04">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="./index.php">Home</a>
+                    <a class="<?= urlIs("/index.php") ? 'nav-link active' : 'nav-link' ?>" aria-current="page" href="./index.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./test.php">Test</a>
+                    <a class="<?= urlIs("/test.php") ? 'nav-link active' : 'nav-link' ?>" href="./test.php">Test</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./test_get_photo.php">Test get Photo</a>
+                    <a class="<?= urlIs("/test_get_photo.php") ? 'nav-link active' : 'nav-link' ?>" href="./test_get_photo.php">Test get Photo</a>
                 </li>
             </ul>
         </div>
