@@ -3,3 +3,7 @@
         <p class="text-center text-body-secondary border-top">&copy; 2023 Nhung NGUYEN. All rights reserved.</p>
     </footer>
 </div>
+
+</body>
+
+</html>

@@ -1,6 +1,16 @@
 <?php
-require_once("./template/main_template.php");
 
-echo "hello world";
+$title = "Test";
 
-require_once("./template/footer.php");
+function dump_die($value)
+{
+    echo "<pre>";
+    var_dump($value);
+    echo "</pre>";
+
+    die();
+}
+
+// dump_die($_SERVER); // Get to know superglobal variables.
+
+require "./views/test.view.php";
