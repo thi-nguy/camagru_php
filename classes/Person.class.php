@@ -1,6 +1,6 @@
 <?php
 
-class Person
+class Person // Class's name should be the same as the file's name
 {
     public $name;
     public $eyeColor;
@@ -32,10 +32,9 @@ class Person
     {
         return self::$drinkingAge;
     }
-}
 
-echo Person::$drinkingAge; # Khong can create object van access vao static property duoc.
-Person::setDrinkingAge(18);
-echo Person::$drinkingAge;
-$person1 = new Person("Daniel", "blue", "18");
-echo $person1->getDrinkingAge();
+    public function getPersonName()
+    {
+        return $this->name;
+    }
+}
