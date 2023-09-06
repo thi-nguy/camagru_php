@@ -11,7 +11,7 @@ $connect = mysqli_connect(
     'camagru_database' # db name in phpMyadmin
 );
 
-$query = "SELECT * from photo";
+$query = "SELECT * from photos";
 $results = mysqli_query($connect, $query);
 
 require "./views/test_get_photo.view.php";

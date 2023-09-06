@@ -15,6 +15,10 @@ echo Person::$drinkingAge  . "</br>";
 
 $person2 = new Person("Daniel", "blue", "20");
 echo $person2->getDrinkingAge()  . "</br>";
+
+$testObj = new Test();
+$testObj->getNameStatement("cat1");
+// $testObj->setNameStatement("Lucy", "Lucy on the moon", "2023-09-06")
 ?>
 
 <?php require "partials/footer.php"; ?>

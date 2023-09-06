@@ -16,9 +16,6 @@
                 <li class="nav-item">
                     <a class="<?= urlIs("/test_get_photo.php") ? 'nav-link active' : 'nav-link' ?>" href="./test_get_photo.php">Test get Photo</a>
                 </li>
-                <li class="nav-item">
-                    <a class="<?= urlIs("/NewClass.include.php") ? 'nav-link active' : 'nav-link' ?>" href="./NewClass.include.php">Test Object Oriented Php</a>
-                </li>
             </ul>
         </div>
     </div>
