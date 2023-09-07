@@ -27,6 +27,7 @@ Sending mail by using PHPMailer.
 - Learn AJAX: is used to load data from databases or to get data from a server without having to refresh the browser. It can work with server language like php or javascript.
 - Prepared statement? Why?
 - How to design a database? Which tables do we need? Which columns should we add inside a table? How to decide the relation between tables?
+- Bootstrap without JavaScripts?
 
 ## Knowledge gathered along the way
 

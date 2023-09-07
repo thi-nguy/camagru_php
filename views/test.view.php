@@ -19,6 +19,12 @@ echo $person2->getDrinkingAge()  . "</br>";
 $testObj = new Test();
 $testObj->getNameStatement("cat1");
 // $testObj->setNameStatement("Lucy", "Lucy on the moon", "2023-09-06")
+
+$userObj = new UsersView();
+$userObj->showUserEmail("meo_hen");
+
+$userCtrObj = new UsersController();
+$userCtrObj->addUser("Boute2", "boute2@boute.com", "0");
 ?>
 
 <?php require "partials/footer.php"; ?>
