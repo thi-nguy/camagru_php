@@ -8,9 +8,9 @@
                 <div class="card shadow-sm">
                     <img src="data:image/jpeg;base64,<?= base64_encode(($one_photo['image'])) ?>" alt="catphoto">
                     <div class="card-body">
-                        <p class="card-text"><?= $one_photo['name'] ?></p>
+                        <p class="card-text"><?= $one_photo['image_name'] ?></p>
                         <div class="d-flex justify-content-between align-items-center">
-                            <small class="text-body-secondary">Author: pony</small>
+                            <small class="text-body-secondary">Author: <?= $one_photo['username'] ?></small>
                             <small class="text-body-secondary">created at: <?= $one_photo['date_created'] ?></small>
                         </div>
                     </div>

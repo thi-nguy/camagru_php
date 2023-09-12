@@ -11,7 +11,7 @@ $connect = mysqli_connect(
     'camagru_database' # db name in phpMyadmin
 );
 
-$query = "SELECT * from photos";
+$query = "SELECT * FROM photos JOIN users ON user_fk = user_id ORDER BY date_created DESC";
 $results = mysqli_query($connect, $query);
 
 require "./views/test_get_photo.view.php";

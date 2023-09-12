@@ -20,18 +20,20 @@ Sending mail by using PHPMailer.
 - [x] Write a dockerfile to set up php server because we need to use some dependencies / packages of php (for example: `PhpMailer` to send email to user, `mysqli` to connect to mysql database, etc...). Some packages (like mysqli) won't be installed at the time the container php is up. We can do it manually inside the terminal of php container once it is up. But I want to install everything at once, hence the dockerfile. We can't do it from docker-compose.yml so we need a dockerfile for php server. Other services: phpmyadmin and mysql don't need further configuration hence no dockefile for them.
 - Put info of Mysql into .env file.
 - Add PhpMailer into docker.
+- Docker executes sql scripts in `database_local` folder by alphabet order. That's why I am naming them with number in front of the real name. Because I want to make sure that `users` should be created before `photos` and `comments_likes` is created in the end. I should add a Dockerfile for `mysql` to avoid that kind of naming.
 
 ### Database
 
 - [x] Inside phpMyadmin, I added some initial data. Then I exported each table in the form of sql files. I copy those files into database_local so that we can link it to our database container each time we build it up. Otherwise when we turn down containers, we'll loose our database. The reason I used phpMyadmin and export sql file is because I'm not an expert in SQL. You can always code / write it from scratch.
 - [x] Learn SQL basics.
-- Design the database. How to design a database? Which tables do we need? Which columns should we add inside a table? How to decide the relation between tables?
-- Learn how to connect to database by using PDO (mysqli is used for procedural programming, PDO is for OOP).
+- [x] Design the database. How to design a database? Which tables do we need? Which columns should we add inside a table? How to decide the relation between tables?
+- [x] Learn how to connect to database by using PDO (mysqli is used for procedural programming, PDO is for OOP).
 - Prepared statement? Why do we need it? -> To avoid SQL Injection?
+- [x] How to write the query to get info from relational tables? (use JOIN statement).
 
 ### CSS - Bootstrap
 
-- Download Boostrap into the project instead of using CDN (Content Delivery Network).
+- Download Bootstrap into the project instead of using CDN (Content Delivery Network).
 - How to do Bootstrap without JavaScripts?
 
 ### OOP PHP - MVC
