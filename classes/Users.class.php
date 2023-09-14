@@ -12,10 +12,10 @@ class Users extends DatabaseHandler
         return $results;
     }
 
-    protected function setUser($name, $email, $notification)
+    protected function setUser($name, $email, $notification, $pass)
     {
-        $sql = "INSERT INTO users(username, email, notification) VALUES(?, ?, ?)";
+        $sql = "INSERT INTO users(username, email, notification, user_pwd) VALUES(?, ?, ?, ?)";
         $sqlStatement = $this->connect()->prepare($sql);
-        $sqlStatement->execute([$name, $email, $notification]);
+        $sqlStatement->execute([$name, $email, $notification, $pass]);
     }
 }

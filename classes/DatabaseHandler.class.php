@@ -9,10 +9,14 @@ class DatabaseHandler
 
     protected function connect()
     {
-        $dsn = "mysql:host=" . $this->host . ";dbname=" . $this->dbName;
-        // Create PDO connection
-        $pdo = new PDO($dsn, $this->user, $this->pwd);
-        $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-        return $pdo;
+        try {
+            $dsn = "mysql:host=" . $this->host . ";dbname=" . $this->dbName;
+            // Create PDO connection
+            $pdo = new PDO($dsn, $this->user, $this->pwd);
+            $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+            return $pdo;
+        } catch (PDOException $error) {
+            print "Error!: " . $error->getMessage() . "</br>";
+        }
     }
 }

@@ -1,8 +1,8 @@
 <?php
 class UsersController extends Users
 {
-    public function addUser($name, $email, $notification)
+    public function addUser($name, $email, $notification, $pass)
     {
-        $this->setUser($name, $email, $notification);
+        $this->setUser($name, $email, $notification, $pass);
     }
 }
