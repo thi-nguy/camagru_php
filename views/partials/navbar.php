@@ -16,6 +16,9 @@
                 <li class="nav-item">
                     <a class="<?= urlIs("/test_get_photo.php") ? 'nav-link active' : 'nav-link' ?>" href="./test_get_photo.php">Test get Photo</a>
                 </li>
+                <li class="nav-item">
+                    <a class="<?= urlIs("/signup.php") ? 'nav-link active' : 'nav-link' ?>" href="./signup.php">Sign Up</a>
+                </li>
             </ul>
         </div>
     </div>
