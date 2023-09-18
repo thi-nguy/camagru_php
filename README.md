@@ -65,6 +65,7 @@ Sending mail by using PHPMailer.
 - Note: since May 2022 we can no longer use PHPMailer with gmail: https://support.google.com/accounts/answer/6010255?hl=en
 - Find a way to install PHPMailer at Docker build step.
 - Finish the Verify Email step (after user clicks the link).
+- Using session? `session_start()`?
 
 ### Sign In Feature
 
