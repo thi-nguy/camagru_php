@@ -14,9 +14,11 @@ if (isset($_POST['submit'])) {
     $pwd = $_POST['password'];
     $pwdRepeat = $_POST['passwordRepeat'];
     $email = $_POST['email'];
+    $verifyToken = md5(rand());
 
+    loadEnvVar();
     // Instantiate SignUpController Class
-    $signup = new SignUpCtr($uid, $pwd, $pwdRepeat, $email);
+    $signup = new SignUpCtr($uid, $pwd, $pwdRepeat, $email, $verifyToken);
 
     $signup->signUpUser();
     echo "Signup successfully on " . date('Y-m-d H:i:s');

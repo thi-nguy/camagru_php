@@ -1,18 +1,27 @@
 <?php
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'PHPMailer-master/src/Exception.php';
+require 'PHPMailer-master/src/PHPMailer.php';
+require 'PHPMailer-master/src/SMTP.php';
+
 class SignUpCtr extends SignUpModel
 {
     private $uid;
     private $pwd;
     private $pwdRepeat;
     private $email;
+    private $token;
 
-    public function __construct($uid, $password, $passwordRepeat, $email)
+    public function __construct($uid, $password, $passwordRepeat, $email, $token)
     {
         $this->uid = $uid;
         $this->pwd = $password;
         $this->pwdRepeat = $passwordRepeat;
         $this->email = $email;
+        $this->token = $token;
     }
 
     public function signUpUser()
@@ -37,7 +46,8 @@ class SignUpCtr extends SignUpModel
             echo ("Error! User or email is already used");
             exit();
         }
-        $this->setUser($this->uid, $this->pwd, $this->email);
+        $this->sendVerificationEmail($this->uid, $this->email, $this->token);
+        $this->setUser($this->uid, $this->pwd, $this->email, $this->token);
     }
 
     private function emptyInput()
@@ -76,5 +86,50 @@ class SignUpCtr extends SignUpModel
             $result = true;
         }
         return $result;
+    }
+
+    private function sendVerificationEmail($uid, $email, $token)
+    {
+        $mail = new PHPMailer(true);
+
+        //ServeTr settings
+        $mail->isSMTP();
+        $mail->SMTPAuth = true;
+        $mail->CharSet = "utf-8";
+        $mail->SMTPSecure = "tls";
+        $mail->Port = 587;
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->SMTPOptions = array(
+            'tls' => array(
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+                'allow_self_signed' => true
+            )
+        );
+
+        $mail->Host = $_ENV['Host'];
+        $mail->Username =  $_ENV['Username'];
+        $mail->Password = $_ENV['Password'];
+
+        //Recipients
+        $mail->setFrom($mail->Username, 'Camagru');
+        $mail->addAddress($email);
+
+        //Content
+        $mail->isHTML(true);
+        $mail->Subject = 'Verify your email to login to Camagru';
+        $email_template = "
+            <h2>You have registered with Camagru.</h2>
+            <h5>To be able to login to our website, please verify your email address by clicking to the given link below.</h5>
+            <br/><br/>
+            <a href='http://localhost/signup.php?token=$token'>Verification Link</a>
+            ";
+        $mail->Body = $email_template;
+
+        if ($mail->send()) {
+            echo 'Message has been sent to your email.';
+        } else {
+            echo "FAIL to send verification email!";
+        }
     }
 }

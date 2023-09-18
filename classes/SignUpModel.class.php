@@ -2,13 +2,13 @@
 
 class SignUpModel extends DatabaseHandler
 {
-    protected function setUser($uid, $pass, $email)
+    protected function setUser($uid, $pass, $email, $token)
     {
-        $stmt = $this->connect()->prepare('INSERT INTO users (username, user_pwd, email) VALUE (?, ?, ?)');
+        $stmt = $this->connect()->prepare('INSERT INTO users (username, user_pwd, email, token) VALUE (?, ?, ?, ?)');
 
         $hashedPassword = password_hash($pass, PASSWORD_DEFAULT);
 
-        if (!$stmt->execute(array($uid, $hashedPassword, $email))) {
+        if (!$stmt->execute(array($uid, $hashedPassword, $email, $token))) {
             $stmt = null;
             echo ("PDO statement is failed");
             exit();
